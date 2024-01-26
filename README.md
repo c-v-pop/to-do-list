@@ -1,4 +1,2 @@
-# tailwind-base-project
+# To-Do List with Laravel
 
-rebuild css with:
-npm run build-css
