@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1ce7f964f6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Todo List</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container w-25 mt-5">
         <div class="card">
             <div class="card-body">
                 <h3>To-Do List</h3>
