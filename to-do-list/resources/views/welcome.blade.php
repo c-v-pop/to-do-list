@@ -21,6 +21,15 @@
         </style>
     </head>
     <body class="antialiased">
-                <h1 class="text-center">Hello</h1>
+        <main class="text-center">
+    <h1>Laravel To-Do List</h1>
+
+    <div class="container">
+            <nav class="navbar navbar-default">
+                <!-- Navbar Contents -->
+            </nav>
+        </div>
+
+    </main>
     </body>
 </html>
