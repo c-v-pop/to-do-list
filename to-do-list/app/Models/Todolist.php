@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Todolist extends Model
 {
     use HasFactory;
-    protected $fillable = ['content', 'completed'];
+    protected $fillable = [
+     'content',
+     'completed',
+     'deadline',
+    ];
 }

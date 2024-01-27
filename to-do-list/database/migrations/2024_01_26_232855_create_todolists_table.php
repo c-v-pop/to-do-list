@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('todolists', function (Blueprint $table) {
             $table->id();
             $table->string('content');
+            $table->boolean('completed')->default(false);
+            $table->date('deadline')->nullable();
             $table->timestamps();
         });
     }
