@@ -10,7 +10,7 @@ Installation
 git clone https://github.com/NoAnswerss/to-do-list.git
 
 2 Navigate to the project directory
-cd todo-list
+cd .\to-do-list\
 
 3 Install composer dependencies:
 composer install
