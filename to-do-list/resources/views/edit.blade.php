@@ -8,16 +8,15 @@
     <title>Edit Task</title>
 </head>
 <body class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-md w-2/4">
-        <h2 class="text-center text-2xl text-gray-800 mb-4">Edit Task</h2>
+    <div class="bg-blue-300 bg-opacity-35 p-8 rounded-lg shadow-md lg:w-2/5 sm:w-2/4">
+        <h1 class="text-center mb-4 text-2xl font-bold text-white text-shadow-lg">Edit Task</h1>
         <form action="{{ route('update', $todolist->id) }}" method="POST">
             @csrf
             @method('patch')
             <div class="mb-4">
-                <label for="content" class="text-gray-600 block">Task:</label>
                 <input type="text" name="content" maxlength="70" value="{{ $todolist->content }}" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Update Task</button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300 w-full font-semibold">Update Task</button>
         </form>
     </div>
 </body>

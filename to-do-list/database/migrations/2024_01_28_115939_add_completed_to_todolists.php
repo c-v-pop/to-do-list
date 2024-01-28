@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('todolists', function (Blueprint $table) {
-            $table->id();
-            $table->string('content');
-            $table->boolean('completed')->default(false);
-            $table->boolean('overdue')->default(false);
-            $table->date('deadline')->nullable();
-            $table->timestamps();
+        Schema::table('todolists', function (Blueprint $table) {
+            //
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todolists');
+        Schema::table('todolists', function (Blueprint $table) {
+            //
+        });
     }
 };

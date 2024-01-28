@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todolist;
+use Illuminate\Support\Carbon;
 
 class TodolistController extends Controller
 {
     public function index()
     {
         $todolists = Todolist::orderBy('completed')->get();
+        foreach ($todolists as $todolist) {
+            $todolist->overdue = Carbon::now()->greaterThan($todolist->due_date);
+        }
         return view('home', compact('todolists'));
     }
 

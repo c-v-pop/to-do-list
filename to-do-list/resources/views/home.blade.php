@@ -18,43 +18,64 @@
             <h1 class="text-center text-white text-6xl">To-Do List</h1>
             <form action="{{ route('store') }}" method="POST" autocomplete="off" class="p-2">
                 @csrf
+
                 <div class="flex flex-row justify-between p-2">
-                    <input type="text" name="content" maxlength="70" placeholder="Add your Task" class="p-2 w-3/4 rounded-tl-md rounded-bl-md" />
+                    <input type="text" name="content" maxlength="70" placeholder="Add your Task" class="p-2 w-3/4 rounded-tl-md rounded-bl-md" required />
                     <span>
-                        <button type="submit" class="bg-blue-500 text-white p-2 w-60 h-full hover:bg-pink-500 transition duration-300 ease-in-out rounded-tr-md rounded-br-md">
+                        <button type="submit" class="bg-blue-500 text-white p-2 w-auto h-full hover:bg-pink-500 transition-text duration-300 ease-in-out rounded-tr-md rounded-br-md">
                             <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </span>
+                    <span class="flex items-center bg-white rounded-md ml-2">
+                        <label for="deadline" class="justify-center text-red-500 ml-1 font-semibold">Deadline:</label>
+                        <input type="date" name="deadline" class="text-blue-500 mr-1">
+                    </span>
+                </div>
+            </form>
+            <!-- If Task list code starts -->
+
+            @if(count($todolists))
+            <ul class="flex flex-col">
+            <form action="{{ route('index') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
+                <div class="input-group w-full flex justify-between items-center">
+                    <input type="text" name="search" class="form-control p-2 w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-secondary text-blue-500 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out ml-auto">
+                            <i class="fa-solid fa-magnifying-glass text-xl mr-6 hover:text-black transition-text duration-500 hover:scale-125"></i>
                         </button>
                     </span>
                 </div>
             </form>
-
-            <!-- If Task list code starts -->
-            @if(count($todolists))
-            <ul class="flex flex-col">
                 @foreach($todolists as $todolist)
                 @unless($todolist->completed)
                 <li class="flex flex-row items-center justify-between p-2 bg-gradient-to-r from-blue-200 via-purple-150 to-blue-100 mx-4 mb-2 rounded-md">
                     <span class="mr-auto">{{ $todolist->content }}</span>
-                    <!-- Delete Form -->
-
-
+                    <span class="{{ $todolist->overdue ? 'text-red-500' : '' }}">
+            {{ $todolist->due_date }}
+        </span>
                     <form action="{{ route('complete', $todolist->id) }}" method="POST">
                         @csrf
                         <button type="submit" class="h-full">
-                            <p class="text-blue-500 ml-7 mr-2 font-bold hover:text-green-500 transition duration-500 ease-out">Mark as complete</p>
+                            <p class="text-blue-500 ml-7 mr-2 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out">Mark as complete</p>
                         </button>
                     </form>
+
+                    
                     <!-- Edit Form -->
+
                     <form action="{{ route('edit', $todolist->id) }}" method="GET">
                         <button type="submit" class="bg-blue-500 text-white p-2">
-                            <i class="fa-solid fa-pencil hover:text-black transition-text duration-500"></i>
+                            <i class="fa-solid fa-pencil hover:text-black transition-text duration-500 hover:scale-125"></i>
                         </button>
                     </form>
+
+                    <!-- Delete Form -->
+
                     <form action="{{ route('destroy', $todolist->id) }}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="bg-red-500 text-white p-2">
-                            <i class="fa-solid fa-trash hover:text-black transition-text duration-500"></i>
+                            <i class="fa-solid fa-trash hover:text-black transition-text duration-500 hover:scale-125"></i>
                         </button>
                     </form>
                 </li>
@@ -62,7 +83,7 @@
                 @endforeach
             </ul>
             @else
-            <p class="text-white p-2">No Tasks!</p>
+            <p class="text-white p-2 text-center text-2xl">No Tasks!</p>
             @endif
             <!-- If Task list code Ends -->
         </div>

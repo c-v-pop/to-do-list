@@ -12,5 +12,6 @@ class Todolist extends Model
      'content',
      'completed',
      'deadline',
+     'overdue',
     ];
 }
