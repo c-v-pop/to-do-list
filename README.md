@@ -2,7 +2,7 @@
 
 Welcome to my Laravel To-Do List.
 
-Below are the simple stept to get the project up and running.
+Below are the simple steps to get the project up and running.
 
 Installation 
 
