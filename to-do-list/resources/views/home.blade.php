@@ -49,7 +49,7 @@
                 @foreach($todolists as $todolist)
                 @unless($todolist->completed)
                 <li class="flex flex-row items-center justify-between p-2 bg-gradient-to-r from-blue-200 via-purple-150 to-blue-100 mx-4 mb-2 rounded-md">
-                    <span class="mr-auto">{{ $todolist->content }}</span>
+                    <span class="mr-auto">{{ $todolist->content }} - {{ $todolist->deadline }} </span>
                     <form action="{{ route('complete', $todolist->id) }}" method="POST">
                         @csrf
                         <button type="submit" class="h-full">
