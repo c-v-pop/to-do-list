@@ -20,7 +20,8 @@ class TodolistController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'content' => 'required'
+            'content' => 'required',
+            'deadline' => 'nullable|date', // Add validation for the deadline
         ]);
 
         Todolist::create($data);
