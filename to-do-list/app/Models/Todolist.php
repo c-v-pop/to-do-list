@@ -14,4 +14,8 @@ class Todolist extends Model
      'deadline',
      'overdue',
     ];
+    public function getFormattedDueDateAttribute()
+    {
+        return optional($this->due_date)->format('Y-m-d H:i:s'); // Adjust the format as needed
+    }
 }

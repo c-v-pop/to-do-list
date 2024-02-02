@@ -31,28 +31,30 @@
                         <input type="date" name="deadline" class="text-blue-500 mr-1">
                     </span>
                 </div>
+                
             </form>
+            
             <!-- If Task list code starts -->
 
             @if(count($todolists))
             <ul class="flex flex-col">
-            <form action="{{ route('index') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
-                <div class="input-group w-full flex justify-between items-center">
-                    <input type="text" name="search" class="form-control p-2 w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" />
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-secondary text-blue-500 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out ml-auto">
-                            <i class="fa-solid fa-magnifying-glass text-xl mr-6 hover:text-black transition-text duration-500 hover:scale-125"></i>
-                        </button>
-                    </span>
-                </div>
-            </form>
+                <form action="{{ route('index') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
+                    <div class="input-group w-full flex justify-between items-center">
+                        <input type="text" name="search" class="form-control p-2 w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-secondary text-blue-500 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out ml-auto">
+                                <i class="fa-solid fa-magnifying-glass text-xl mr-6 hover:text-black transition-text duration-500 hover:scale-125"></i>
+                            </button>
+                        </span>
+                        
+                    </div>
+                </form>
                 @foreach($todolists as $todolist)
                 @unless($todolist->completed)
                 <li class="flex flex-row items-center justify-between p-2 bg-gradient-to-r from-blue-200 via-purple-150 to-blue-100 mx-4 mb-2 rounded-md">
                     <span class="mr-auto">{{ $todolist->content }}</span>
-                    <span class="{{ $todolist->overdue ? 'text-red-500' : '' }}">
-            {{ $todolist->due_date }}
-        </span>
+                   
+
                     <form action="{{ route('complete', $todolist->id) }}" method="POST">
                         @csrf
                         <button type="submit" class="h-full">
@@ -60,7 +62,7 @@
                         </button>
                     </form>
 
-                    
+
                     <!-- Edit Form -->
 
                     <form action="{{ route('edit', $todolist->id) }}" method="GET">
