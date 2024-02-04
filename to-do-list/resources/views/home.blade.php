@@ -31,9 +31,9 @@
                         <input type="date" name="deadline" class="text-blue-500 mr-1">
                     </span>
                 </div>
-                
+
             </form>
-            
+
             <!-- If Task list code starts -->
 
             @if(count($todolists))
@@ -46,14 +46,26 @@
                                 <i class="fa-solid fa-magnifying-glass text-xl mr-6 hover:text-black transition-text duration-500 hover:scale-125"></i>
                             </button>
                         </span>
-                        
+
                     </div>
                 </form>
                 @foreach($todolists as $todolist)
                 @unless($todolist->completed)
-                <li class="flex flex-row items-center justify-between p-2 bg-gradient-to-r from-blue-200 via-purple-150 to-blue-100 mx-4 mb-2 rounded-md">
-                    <span class="mr-auto">{{ $todolist->content }}</span>
-                   
+
+                <li class="flex flex-row items-center justify-between p-2
+    @php
+        $overdueClass = ($todolist->deadline && $todolist->deadline < now()) ? 'text-gray-500' : 'text-gray-500';
+        echo $overdueClass;
+    @endphp
+    font-bold bg-gradient-to-r from-blue-200 via-purple-150 to-blue-100 mx-4 mb-2 rounded-md">
+    <span class="mr-auto">{{ $todolist->content }}</span>
+    <span class="text-pink-800 font-extrabold shadow-sm">
+        @php
+            $deadlineDisplay = ($todolist->deadline && $todolist->deadline < now()) ? ' Task is Overdue' : ($todolist->deadline ? \Carbon\Carbon::parse($todolist->deadline)->format('d-m-Y') : 'No Deadline');
+            echo $deadlineDisplay;
+        @endphp
+    </span>
+
 
                     <form action="{{ route('complete', $todolist->id) }}" method="POST">
                         @csrf
@@ -80,9 +92,9 @@
                             <i class="fa-solid fa-trash hover:text-black transition-text duration-500 hover:scale-125"></i>
                         </button>
                     </form>
-                </li>
-                @endunless
-                @endforeach
+                    </li>
+                    @endunless
+                    @endforeach
             </ul>
             @else
             <p class="text-white p-2 text-center text-2xl">No Tasks!</p>

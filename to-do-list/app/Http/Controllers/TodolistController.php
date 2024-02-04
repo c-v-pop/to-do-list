@@ -23,15 +23,11 @@ class TodolistController extends Controller
     {
         $data = $request->validate([
             'content' => 'required',
-            'due_date' => 'date', // Assuming due_date is a date field in your database
+            'deadline' => 'nullable|date', // Add validation for the deadline
         ]);
-
-        $todolist = Todolist::create($data);
-
-        // Check if the task is overdue and update the 'overdue' status
-        $todolist->overdue = Carbon::now()->greaterThan($todolist->due_date);
-        $todolist->save();
-
+    
+        Todolist::create($data);
+    
         return back();
     }
 
