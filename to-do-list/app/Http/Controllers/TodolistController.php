@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todolist;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 class TodolistController extends Controller
 {
     public function index()
     {
         $todolists = Todolist::orderBy('completed')->get();
+
         foreach ($todolists as $todolist) {
             $todolist->overdue = Carbon::now()->greaterThan($todolist->due_date);
         }
+
         return view('home', compact('todolists'));
     }
 
@@ -23,9 +25,9 @@ class TodolistController extends Controller
             'content' => 'required',
             'deadline' => 'nullable|date', // Add validation for the deadline
         ]);
-
+    
         Todolist::create($data);
-        
+    
         return back();
     }
 
@@ -35,34 +37,31 @@ class TodolistController extends Controller
         return back();
     }
 
-    public function markComplete(Todolist $task)
-    {
-        $task->completed = true;
-        $task->save();
-
-        $pendingTasksCount = Todolist::where('completed', false)->count();
-
-        return redirect()->back()->with('pendingTasksCount', $pendingTasksCount);
-    }
-    
     public function destroy(Todolist $todolist)
     {
         $todolist->delete();
         return back();
     }
 
-    public function edit(Todolist $todolist)
+    public function edit($id)
     {
-        return view('edit', compact('todolist'));
+        $todolist = Todolist::findOrFail($id);
+
+        return view('edit', ['todolist' => $todolist]);
     }
 
     public function update(Request $request, Todolist $todolist)
     {
         $data = $request->validate([
             'content' => 'required',
+            'due_date' => 'date', // Assuming due_date is a date field in your database
         ]);
 
         $todolist->update($data);
+
+        // Check if the task is overdue and update the 'overdue' status
+        $todolist->overdue = Carbon::now()->greaterThan($todolist->due_date);
+        $todolist->save();
 
         return redirect()->route('index');
     }
