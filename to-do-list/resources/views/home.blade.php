@@ -40,7 +40,7 @@
             <ul class="flex flex-col">
                 <form action="{{ route('index') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
                     <div class="input-group w-full flex justify-between items-center">
-                        <input type="text" name="search" class="form-control p-2 w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" />
+                        <input type="text" name="search" class="form-control p-2 w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" autocomplete="off"/>
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-secondary text-blue-500 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out ml-auto">
                                 <i class="fa-solid fa-magnifying-glass text-xl mr-6 hover:text-black transition-text duration-500 hover:scale-125"></i>
