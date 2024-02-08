@@ -19,6 +19,18 @@ class TodolistController extends Controller
         return view('home', compact('todolists'));
     }
 
+    public function search(Request $request)
+    {
+        // Retrieve the search term from the request
+        $search = $request->input('search');
+
+        // Perform the search in the 'content' field
+        $todolists = Todolist::where('content', 'like', '%' . $search . '%')->get();
+
+        // Pass the result to the 'home' view
+        return view('home', ['todolists' => $todolists]);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([

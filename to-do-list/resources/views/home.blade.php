@@ -38,7 +38,7 @@
 
             @if(count($todolists))
             <ul class="flex flex-col">
-                <form action="{{ route('index') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
+                <form action="{{ route('todolists.search') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
                     <div class="input-group w-full flex justify-between items-center">
                         <input type="text" name="search" class="form-control p-2 w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" autocomplete="off"/>
                         <span class="input-group-btn">
@@ -49,6 +49,7 @@
 
                     </div>
                 </form>
+
                 @foreach($todolists as $todolist)
                 @unless($todolist->completed)
 
