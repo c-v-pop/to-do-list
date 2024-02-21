@@ -6,4 +6,4 @@ module.exports = {
   },
   plugins: [],
 }
-
+/** Tailwind CSS is loaded */
