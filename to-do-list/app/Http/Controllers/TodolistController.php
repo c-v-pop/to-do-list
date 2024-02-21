@@ -21,7 +21,6 @@ class TodolistController extends Controller
 
     public function search(Request $request)
     {
-        // Retrieve the search term from the request
         $search = $request->input('search');
 
         // Perform the search in the 'content' field
