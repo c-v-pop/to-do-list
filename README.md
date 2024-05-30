@@ -1,4 +1,4 @@
-# Laravel To-Do List
+Laravel To-Do List
 
 Welcome to my Laravel To-Do List.
 
