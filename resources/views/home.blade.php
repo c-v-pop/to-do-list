@@ -13,7 +13,7 @@
    <body class="bg-gradient-to-br from-black/70 via-purple-350 to-black/100 min-h-screen flex items-center justify-center">
       <div class="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-2/5">
          <div class="w-full">
-            <h1 class="text-center text-white text-6xl">To-Do List</h1>
+            <h1 class="text-center text-white/90 font-bold text-6xl">To-Do List</h1>
             <form action="{{ route('store') }}" method="POST" autocomplete="off" class="p-2">
                @csrf
                <div class="flex flex-row justify-between p-2">
