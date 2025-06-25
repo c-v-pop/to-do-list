@@ -51,7 +51,8 @@ class TodolistController extends Controller
     public function destroy(Todolist $todolist)
     {
         $todolist->delete();
-        return back();
+        return redirect()->route('index')->with('success', 'Task deleted successfully!');
+
     }
 
     public function edit($id)
