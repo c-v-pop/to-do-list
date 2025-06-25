@@ -60,7 +60,7 @@
             <form action="{{ route('complete', $todolist->id) }}" method="POST">
                @csrf
                <button type="submit" class="h-full">
-                  <p class="text-blue-500 ml-7 mr-2 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out" title="Mark task as complete">Mark as complete</p>
+                  <p class="text-blue-500 ml-7 mr-2 font-bold transition-text duration-500 ease-out" title="Mark task as complete"><i class="fa-solid fa-check hover:text-green-400 transition-text duration-500 bg-black/80 p-3" title="View or edit task"></i></p>
                </button>
             </form>
             <!-- Edit Form -->
