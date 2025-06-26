@@ -16,14 +16,14 @@
          <h1 class="text-center text-white/90 font-bold text-6xl">To-Do List</h1>
          <form action="{{ route('store') }}" method="POST" autocomplete="off" class="p-2">
             @csrf
-            <div class="flex flex-row justify-between p-2">
-               <input type="text" name="content" maxlength="70" placeholder="Add your Task" class="p-2 w-3/4 rounded-tl-md rounded-bl-md" required />
+            <div class="flex flex-col md:flex-row justify-between p-2">
+               <input type="text" name="content" maxlength="70" placeholder="Add your Task" class="p-2 md:w-3/4 rounded-tl-md rounded-bl-md" required />
                <span>
                   <button type="submit" class="bg-blue-500/50 text-white p-2 w-auto h-full hover:bg-blue-500 transition-text duration-300 ease-in-out rounded-tr-md rounded-br-md" title="Add task">
                      <i class="fa-solid fa-plus"></i>
                   </button>
                </span>
-               <span class="flex items-center bg-white rounded-md ml-2" title="Select date">
+               <span class="flex items-center bg-white rounded-md ml-2 text-xs" title="Select date">
                   <label for="deadline" class="justify-center text-red-500 ml-1 font-semibold">Deadline:</label>
                   <input type="date" name="deadline" class="text-blue-500 mr-1">
                </span>
@@ -50,8 +50,8 @@
             echo $overdueClass;
             @endphp
                   font-bold bg-gradient-to-r from-blue-200 via-purple-150 to-blue-100 mx-4 mb-2 rounded-md">
-            <span class="mr-auto">{{ $todolist->content }}</span>
-            <span class="text-pink-800 font-extrabold shadow-sm">
+            <span class="mr-auto text-xs">{{ $todolist->content }}</span>
+            <span class="text-pink-800 font-extrabold shadow-sm text-xs">
                @php
                $deadlineDisplay = ($todolist->deadline && $todolist->deadline < now()) ? ' Task is Overdue' : ($todolist->deadline ? \Carbon\Carbon::parse($todolist->deadline)->format('d-m-Y') : 'No Deadline');
                echo $deadlineDisplay;
@@ -61,22 +61,22 @@
                @csrf
                <button type="submit" class="h-full">
                   <p class="text-white ml-7 mr-2 font-bold transition-text duration-500 ease-out" title="Mark task as complete">
-                     <i class="fa-solid fa-check hover:scale-125 hover:text-black transition-text duration-500 bg-green-800 p-3" title="Mark task as complete"></i>
+                     <i class="fa-solid fa-check hover:scale-125 hover:text-black transition-text duration-500 p-1.5 text-green-700" title="Mark task as complete"></i>
                   </p>
                </button>
             </form>
             <!-- Edit Form -->
             <form action="{{ route('edit', $todolist->id) }}" method="GET">
-               <button type="submit" class="bg-blue-500 text-white p-2">
-                  <i class="fa-solid fa-pencil hover:text-black transition-text duration-500 hover:scale-125" title="View or edit task"></i>
+               <button type="submit" class="text-white p-1">
+                  <i class="fa-solid fa-pencil hover:text-black transition-text duration-500 hover:scale-125 text-blue-600" title="View or edit task"></i>
                </button>
             </form>
             <!-- Delete Form -->
             <form action="{{ route('destroy', $todolist->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
                @csrf
                @method('delete')
-               <button type="submit" class="bg-red-500 text-white p-2">
-                  <i class="fa-solid fa-trash hover:text-black transition-text duration-500 hover:scale-125" title="Delete Task"></i>
+               <button type="submit" class="text-white p-1">
+                  <i class="fa-solid fa-trash hover:text-black transition-text duration-500 hover:scale-125 text-red-600" title="Delete Task"></i>
                </button>
             </form>
          </li>
