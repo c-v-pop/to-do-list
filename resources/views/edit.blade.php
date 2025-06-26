@@ -27,7 +27,7 @@
 </form>
 
 {{-- Delete Form --}}
-<form action="{{ route('destroy', $todolist->id) }}" method="POST" class="mt-2">
+<form action="{{ route('destroy', $todolist->id) }}" method="POST" class="mt-2" onsubmit="return confirm('Are you sure you want to delete this task?')">
     @csrf
     @method('delete')
     <button type="submit" class="bg-red-500 text-white p-2 w-full hover:text-black transition-text duration-500 rounded-md" title="Delete Task">

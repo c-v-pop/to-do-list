@@ -57,10 +57,12 @@
                echo $deadlineDisplay;
                @endphp
             </span>
-            <form action="{{ route('complete', $todolist->id) }}" method="POST">
+            <form action="{{ route('complete', $todolist->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to mark the task as complete?')">
                @csrf
                <button type="submit" class="h-full">
-                  <p class="text-blue-500 ml-7 mr-2 font-bold transition-text duration-500 ease-out" title="Mark task as complete"><i class="fa-solid fa-check hover:text-green-400 transition-text duration-500 bg-black/80 p-3" title="View or edit task"></i></p>
+                  <p class="text-white ml-7 mr-2 font-bold transition-text duration-500 ease-out" title="Mark task as complete">
+                     <i class="fa-solid fa-check hover:scale-125 hover:text-black transition-text duration-500 bg-green-800 p-3" title="Mark task as complete"></i>
+                  </p>
                </button>
             </form>
             <!-- Edit Form -->
@@ -70,7 +72,7 @@
                </button>
             </form>
             <!-- Delete Form -->
-            <form action="{{ route('destroy', $todolist->id) }}" method="POST">
+            <form action="{{ route('destroy', $todolist->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
                @csrf
                @method('delete')
                <button type="submit" class="bg-red-500 text-white p-2">

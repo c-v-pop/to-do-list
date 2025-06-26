@@ -45,7 +45,7 @@ class TodolistController extends Controller
     public function complete(Todolist $todolist)
     {
         $todolist->update(['completed' => true]);
-        return back();
+        return redirect()->route('index')->with('success', 'Task completed successfully!');
     }
 
     public function destroy(Todolist $todolist)
