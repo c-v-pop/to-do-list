@@ -16,7 +16,7 @@
          <h1 class="text-center text-white/90 font-bold text-6xl">To-Do List</h1>
          <form action="{{ route('store') }}" method="POST" autocomplete="off" class="p-2">
             @csrf
-            <div class="flex flex-col md:flex-row justify-between p-2 gap-2 md:gap-0 text-xs">
+            <div class="flex flex-col md:flex-row justify-between p-2 gap-2 md:gap-0">
                <input type="text" name="content" maxlength="70" placeholder="Add your Task" class="p-2 w-full md:w-3/4 md:rounded-l-md" required />
                
                <!-- Wrap the two spans in a responsive flex container -->
@@ -40,7 +40,7 @@
          <ul class="flex flex-col">
             <form action="{{ route('todolists.search') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
                <div class="input-group w-full flex justify-between items-center" title="Search for an existing task">
-                  <input type="text" name="search" class="form-control w-full rounded-tl-md rounded-bl-md text-xs" placeholder="Search for a task" autocomplete="off" />
+                  <input type="text" name="search" class="form-control w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" autocomplete="off" />
                   <span class="input-group-btn">
                      <button type="submit" class="btn btn-secondary text-blue-500 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out ml-auto">
                         <i class="fa-solid fa-magnifying-glass text-xl mr-6 hover:text-black transition-text duration-500 hover:scale-125"></i>
