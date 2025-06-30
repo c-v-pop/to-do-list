@@ -17,21 +17,17 @@
          <form action="{{ route('store') }}" method="POST" autocomplete="off" class="p-2">
             @csrf
             <div class="flex flex-col md:flex-row justify-between p-2 gap-2 md:gap-0">
-               <input type="text" name="content" maxlength="70" placeholder="Add your Task" class="p-2 w-full md:w-3/4 md:rounded-l-md" required />
-               
-               <!-- Wrap the two spans in a responsive flex container -->
-               <div class="flex flex-col md:flex-row gap-2 w-full md:w-auto">
-                  <span>
-                     <button type="submit" class="bg-blue-500/50 text-white p-2 w-full md:w-auto hover:bg-blue-500 transition duration-300 ease-in-out md:rounded-r-md" title="Add task">
-                        <i class="fa-solid fa-plus"></i>
-                     </button>
-                  </span>
-                  
-                  <span class="flex items-center bg-white text-xs w-full md:w-auto" title="Select date">
-                     <label for="deadline" class="text-red-500 ml-1 font-semibold py-3">Deadline:</label>
-                     <input type="date" name="deadline" class="text-blue-500 mr-1 w-full md:w-auto">
-                  </span>
+               <div class="flex w-full md:w-3/4">
+                  <input type="text" name="content" maxlength="70" placeholder="Add your Task" class="p-2 w-full rounded-l-md" required />
+                  <button type="submit" class="bg-blue-500/50 text-white p-2 hover:bg-blue-500 transition duration-300 ease-in-out rounded-r-md" title="Add task">
+                     <i class="fa-solid fa-plus"></i>
+                  </button>
                </div>
+               
+               <span class="flex items-center bg-white text-xs w-full md:w-auto md:ml-4 rounded-md" title="Select date">
+                  <label for="deadline" class="text-red-500 ml-1 font-semibold py-3">Deadline:</label>
+                  <input type="date" name="deadline" class="text-blue-500 mr-1 w-full md:w-auto">
+               </span>
             </div>
             
          </form>
