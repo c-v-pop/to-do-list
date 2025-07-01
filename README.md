@@ -10,7 +10,6 @@ Follow these steps to set up the project locally:
 
 ```bash
 git clone https://github.com/NoAnswerss/to-do-list.git
-cd to-do-list
 ````
 
 ### 2. Install backend & frontend dependencies
