@@ -24,7 +24,7 @@
                   </button>
                </div>
                
-               <span class="flex items-center bg-white text-xs w-full md:w-auto md:ml-4 rounded-md" title="Select date">
+               <span class="flex items-center bg-white text-lg w-full md:w-auto md:ml-4 rounded-md" title="Select date">
                   <label for="deadline" class="text-red-500 ml-1 font-semibold py-3">Deadline:</label>
                   <input type="date" name="deadline" class="text-blue-500 mr-1 w-full md:w-auto">
                </span>
@@ -35,10 +35,10 @@
          @if(count($todolists))
          <ul class="flex flex-col">
             <form action="{{ route('todolists.search') }}" method="GET" class="flex flex-row items-center justify-between p-2 bg-white mx-4 mb-2 rounded-md">
-               <div class="input-group w-full flex justify-between items-center" title="Search for an existing task">
+               <div class="input-group w-full flex" title="Search for an existing task">
                   <input type="text" name="search" class="form-control w-full rounded-tl-md rounded-bl-md" placeholder="Search for a task" autocomplete="off" />
                   <span class="input-group-btn">
-                     <button type="submit" class="btn btn-secondary text-blue-500 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out ml-auto">
+                     <button type="submit" class="btn btn-secondary text-blue-500 font-bold hover:scale-110 hover:text-green-500 transition-text duration-500 ease-out ml-auto relative left-6">
                         <i class="fa-solid fa-magnifying-glass text-xl mr-6 hover:text-black transition-text duration-500 hover:scale-125"></i>
                      </button>
                   </span>
