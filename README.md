@@ -1,6 +1,8 @@
 # Laravel To-Do List
 
-Welcome to my Laravel To-Do List — a simple task manager built with Laravel, TailwindCSS, and SQLite.
+Welcome to my Laravel To-Do List 
+
+A simple task manager built with Laravel, TailwindCSS, and SQLite.
 
 ## 🚀 Installation & Setup
 
